@@ -6,7 +6,7 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ site_url('dashboard') }}" class="nav-link">Dashboard</a>
+            <a href="{{ site_url('pantry') }}" class="nav-link">Beranda</a>
         </li>
     </ul>
 
@@ -14,7 +14,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Logout -->
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link"><i class="fa fa-sign-out"></i></a>
+            <a href="{{ site_url('auth/logout') }}" class="nav-link"><i class="fa fa-sign-out"></i></a>
         </li>
     </ul>
 </nav>

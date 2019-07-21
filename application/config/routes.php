@@ -55,28 +55,19 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['auth/login'] = 'auth/login';
 
-$route['pantry/dashboard'] = 'entities/pantry/dashboard/index';
+// -----------------
+// PANTRY
+// -----------------
+
+$route['pantry'] = 'entities/pantry/beranda/index';
+
 $route['pantry/bahanbaku'] = 'entities/pantry/bahanbaku/index';
-$route['pantry/belanja'] = 'entities/pantry/belanja/index';
+$route['pantry/bahanbaku/create'] = 'entities/pantry/bahanbaku/create';
+$route['pantry/bahanbaku/store'] = 'entities/pantry/bahanbaku/store';
+$route['pantry/bahanbaku/edit/(:any)'] = 'entities/pantry/bahanbaku/edit/$1';
+$route['pantry/bahanbaku/update/(:any)'] = 'entities/pantry/bahanbaku/update/$1';
+$route['pantry/bahanbaku/destroy/(:any)'] = 'entities/pantry/bahanbaku/destroy/$1';
 
-$route['koki/dashboard'] = 'entities/koki/dashboard/index';
-$route['koki/bahanbaku'] = 'entities/koki/bahanbaku/index';
-$route['koki/menu'] = 'entities/koki/menu/index';
-
-/*
-$route['posts/index'] = 'posts/index';
-$route['posts/create'] = 'posts/create';
-$route['posts/update'] = 'posts/update';
-$route['posts/(:any)'] = 'posts/view/$1';
-$route['posts'] = 'posts/index';
-
-$route['default_controller'] = 'pages/view';
-
-$route['categories'] = 'categories/index';
-$route['categories/create'] = 'categories/create';
-$route['categories/posts/(:any)'] = 'categories/posts/$1';
-
-$route['(:any)'] = 'pages/view/$1';
-$route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
-*/
+$route['pantry/bahanbaku/belanja/(:any)'] = 'entities/pantry/bahanbaku/index_belanja/$1';
+$route['pantry/bahanbaku/belanja/(:any)/create'] = 'entities/pantry/bahanbaku/create_belanja/$1';
+$route['pantry/bahanbaku/belanja/(:any)/store'] = 'entities/pantry/bahanbaku/store_belanja/$1';

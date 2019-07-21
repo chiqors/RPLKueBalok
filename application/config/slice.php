@@ -50,7 +50,7 @@ $config['enable_autoload'] = TRUE;
 |
 */
 $config['libraries'] = array();
-$config['helpers'] = array('main_helper');
+$config['helpers'] = array('main_helper', 'date');
 
 /*
 |--------------------------------------------------------------------------
