@@ -13,6 +13,40 @@ class Auth extends CI_Controller {
 
 	public function do_login()
 	{
-		// Redirect
+		$this->form_validation->set_rules('Username', 'Username', 'required');
+		$this->form_validation->set_rules('Password', 'Password', 'required');
+
+		$login = $this->pengguna_model->do_login();
+		if ($login > 0) {
+			$data_session = array(
+				'idadmin' => $login->IdAdmin,
+				'username' => $login->Username,
+				'jabatan' => $login->Jabatan
+			);
+			$this->session->set_userdata($data_session);
+			if ($login->Jabatan == "Pantry") {
+				redirect('pantry');
+			} else if ($login->Jabatan == "Koki") {
+				redirect('koki');
+			} else if ($login->Jabatan == "Customer Servis") {
+				redirect('customer_servis');
+			} else if ($login->Jabatan == "Kasir") {
+				redirect('kasir');
+			} else if ($login->Jabatan == "Pelayan") {
+				redirect('pelayan');
+			} else if ($login->Jabatan == "Owner") {
+				redirect('owner');
+			}
+		} else {
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('auth/login');
+		}
 	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('auth/login');
+	}
+
 }

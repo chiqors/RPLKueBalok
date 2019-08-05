@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'auth/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
@@ -59,15 +59,15 @@ $route['auth/login'] = 'auth/login';
 // PANTRY
 // -----------------
 
-$route['pantry'] = 'entities/pantry/beranda/index';
+$route['pantry'] = 'pantry_beranda/index';
 
-$route['pantry/bahanbaku'] = 'entities/pantry/bahanbaku/index';
-$route['pantry/bahanbaku/create'] = 'entities/pantry/bahanbaku/create';
-$route['pantry/bahanbaku/store'] = 'entities/pantry/bahanbaku/store';
-$route['pantry/bahanbaku/edit/(:any)'] = 'entities/pantry/bahanbaku/edit/$1';
-$route['pantry/bahanbaku/update/(:any)'] = 'entities/pantry/bahanbaku/update/$1';
-$route['pantry/bahanbaku/destroy/(:any)'] = 'entities/pantry/bahanbaku/destroy/$1';
+$route['pantry/bahanbaku'] = 'pantry_bahanbaku/index';
+$route['pantry/bahanbaku/create'] = 'pantry_bahanbaku/create';
+$route['pantry/bahanbaku/store'] = 'pantry_bahanbaku/store';
+$route['pantry/bahanbaku/edit/(:any)'] = 'pantry_bahanbaku/edit/$1';
+$route['pantry/bahanbaku/update/(:any)'] = 'pantry_bahanbaku/update/$1';
+$route['pantry/bahanbaku/destroy/(:any)'] = 'pantry_bahanbaku/destroy/$1';
 
-$route['pantry/bahanbaku/belanja/(:any)'] = 'entities/pantry/bahanbaku/index_belanja/$1';
-$route['pantry/bahanbaku/belanja/(:any)/create'] = 'entities/pantry/bahanbaku/create_belanja/$1';
-$route['pantry/bahanbaku/belanja/(:any)/store'] = 'entities/pantry/bahanbaku/store_belanja/$1';
+$route['pantry/bahanbaku/belanja/(:any)'] = 'pantry_bahanbaku/show/$1';
+$route['pantry/bahanbaku/belanja/(:any)/create'] = 'pantry_bahanbaku/create_belanja/$1';
+$route['pantry/bahanbaku/belanja/(:any)/store'] = 'pantry_bahanbaku/store_belanja/$1';

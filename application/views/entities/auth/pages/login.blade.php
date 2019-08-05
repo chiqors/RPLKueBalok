@@ -3,22 +3,22 @@
 @section('content')
 <div class="login-box">
 	<div class="login-logo">
-		<a href="{{ site_url('dashboard') }}">{{ getenv('APP_NAME') }}</a>
+		<a href="{{ site_url('beranda') }}">{{ getenv('APP_NAME') }}</a>
 	</div>
 	<!-- /.login-logo -->
 	<div class="card">
 		<div class="card-body login-card-body">
-			<p class="login-box-msg">Sign in to start your session</p>
+			<p class="login-box-msg">Masuk untuk ke panel</p>
 
 			<form action="{{ site_url('auth/do_login') }}" method="post">
 				<div class="input-group mb-3">
-					<input type="email" class="form-control" placeholder="Email">
+					<input type="text" class="form-control" name="Username" placeholder="Username">
 					<div class="input-group-append">
-						<span class="fa fa-envelope input-group-text"></span>
+						<span class="fa fa-user input-group-text"></span>
 					</div>
 				</div>
 				<div class="input-group mb-3">
-					<input type="password" class="form-control" placeholder="Password">
+					<input type="password" class="form-control" name="Password" placeholder="Password">
 					<div class="input-group-append">
 						<span class="fa fa-lock input-group-text"></span>
 					</div>
