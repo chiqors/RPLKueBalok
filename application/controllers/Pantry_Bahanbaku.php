@@ -3,13 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pantry_Bahanbaku extends CI_Controller {
 
-	/*public function __construct()
+	public function __construct()
 	{
 		parent::__construct();
-		if (empty($this->session->username)) {
+		if ($this->session->jabatan != "Pantry") {
 			redirect('auth/login');
 		}
-	}*/
+	}
 
 	public function index()
 	{

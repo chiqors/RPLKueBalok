@@ -1,4 +1,4 @@
-@extends('entities.pantry.layouts.panel')
+@extends('entities.koki.layouts.panel')
 
 @section('hstyles')
     <link rel="stylesheet" href="{{ asset('cpanel/vendor/bootstrap-datetimepicker/tempusdominus-bootstrap-4.min.css') }}" />
@@ -10,13 +10,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>{{ @$info ? 'Ubah' : 'Tambah' }} Bahan Baku <small></small></h1>
+                <h1>{{ @$info ? 'Ubah' : 'Tambah' }} Menu <small></small></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="{{ site_url('pantry') }}">Beranda</a></li>
-					<li class="breadcrumb-item"><a href="{{ site_url('pantry/bahanbaku') }}">Bahan Baku</a></li>
-                    <li class="breadcrumb-item active">{{ @$info ? 'Ubah' : 'Tambah' }} Bahan Baku</li>
+					<li class="breadcrumb-item"><a href="{{ site_url('koki/menu') }}">Menu</a></li>
+                    <li class="breadcrumb-item active">{{ @$info ? 'Ubah' : 'Tambah' }} Menu</li>
                 </ol>
             </div>
         </div>
@@ -26,14 +25,14 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <form role="form" action="{{ @$info ? site_url('pantry/bahanbaku/update/'.@$info->IdBahanBaku) : site_url('pantry/bahanbaku/store') }}" enctype="multipart/form-data" method="POST">
+        <form role="form" action="{{ @$info ? site_url('koki/menu/update/'.@$info->IdMenu) : site_url('koki/menu/store') }}" enctype="multipart/form-data" method="POST">
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-{{ @$info ? 'warning' : 'primary' }}">
                         <div class="card-header">
-                            <h3 class="card-title">Bahan Baku</h3>
+                            <h3 class="card-title">Menu</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                     <i class="fa fa-minus"></i></button>
@@ -46,21 +45,20 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="nama">Nama Bahan Baku</label>
-                                        <input type="text" class="form-control" name="Nama" placeholder="Nama Bahan Baku" value="{{ @$info ? @$info->Nama : '' }}">
-                                    </div>
-                                    <div class="form-group">
-										<label for="jenis">Jenis Bahan Baku</label>
-                                        <input type="text" class="form-control" name="Jenis" placeholder="Jenis Bahan Baku" value="{{ @$info->Jenis }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="kategori">Kategori Bahan Baku</label>
-                                        <select class="form-control" name="Kategori">
-											<option value="Hewan" {{ (@$info->Kategori=='Hewan') ? 'selected' : '' }}>Hewan</option>
-											<option value="Sayuran" {{ (@$info->Kategori=='Sayuran') ? 'selected' : '' }}>Sayuran</option>
-											<option value="Bumbu" {{ (@$info->Kategori=='Bumbu') ? 'selected' : '' }}>Bumbu</option>
-											<option value="Cairan" {{ (@$info->Kategori=='Cairan') ? 'selected' : '' }}>Cairan</option>
+                                        <label for="JenisMenu">Jenis Menu</label>
+                                        <select class="form-control" name="JenisMenu">
+											<option value="Breakfast" {{ (@$info=="Breakfast") ? 'selected' : '' }}>Breakfast</option>
+											<option value="Umum" {{ (@$info=="Umum") ? 'selected' : '' }}>Umum</option>
+											<option value="Dinner" {{ (@$info=="Dinner") ? 'selected' : '' }}>Dinner</option>
 										</select>
+                                    </div>
+                                    <div class="form-group">
+										<label for="Nama">Nama Menu</label>
+                                        <input type="text" class="form-control" name="Nama" placeholder="Nama" value="{{ @$info->Nama }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="Harga">Harga</label>
+                                        <input type="text" class="form-control" name="Harga" placeholder="Harga" value="{{ @$info->Harga }}">
                                     </div>
                                 </div>
                             </div>

@@ -56,6 +56,33 @@ $route['translate_uri_dashes'] = FALSE;
 $route['auth/login'] = 'auth/login';
 
 // -----------------
+// KOKI
+// -----------------
+
+$route['koki'] = 'Koki_Menu/index';
+
+$route['koki/menu'] = 'Koki_Menu/index';
+
+$route['koki/menu/create'] = 'Koki_Menu/create';
+$route['koki/menu/store'] = 'Koki_Menu/store';
+$route['koki/menu/bahanbaku/create'] = 'Koki_Menu/create_menu_bahanbaku';
+$route['koki/menu/bahanbaku/store'] = 'Koki_Menu/store_menu_bahanbaku';
+
+$route['koki/menu/show/(:any)'] = 'Koki_Menu/show/$1';
+$route['koki/menu/show/(:any)/create'] = 'Koki_Menu/show_create_menu_bahanbaku/$1';
+$route['koki/menu/show/(:any)/store'] = 'Koki_Menu/show_store_menu_bahanbaku';
+
+$route['koki/menu/edit/(:any)'] = 'Koki_Menu/edit/$1';
+$route['koki/menu/update/(:any)'] = 'Koki_Menu/update/$1';
+$route['koki/menu/destroy/(:any)'] = 'Koki_Menu/destroy/$1';
+
+$route['koki/pesanan'] = 'Koki_Pesanan/index';
+$route['koki/pesanan/confirm/(:any)/(:any)'] = 'Koki_Pesanan/show/$1/$2';
+
+$route['koki/bahanbaku'] = 'Koki_Bahanbaku/index';
+$route['koki/bahanbaku/show/(:any)'] = 'Koki_Bahanbaku/show/$1';
+
+// -----------------
 // PANTRY
 // -----------------
 

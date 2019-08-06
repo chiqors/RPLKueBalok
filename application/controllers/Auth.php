@@ -5,6 +5,19 @@ class Auth extends CI_Controller {
 	
 	public function login()
 	{
+		if ($this->session->jabatan == "Pantry") {
+			redirect('pantry');
+		} else if ($this->session->jabatan == "Koki") {
+			redirect('koki');
+		} else if ($this->session->jabatan == "Customer Servis") {
+			redirect('customer_servis');
+		} else if ($this->session->jabatan == "Kasir") {
+			redirect('kasir');
+		} else if ($this->session->jabatan == "Pelayan") {
+			redirect('pelayan');
+		} else if ($this->session->jabatan == "Owner") {
+			redirect('owner');
+		}
 		$data = array(
             'title' => 'Login'
         );
