@@ -56,6 +56,46 @@ $route['translate_uri_dashes'] = FALSE;
 $route['auth/login'] = 'auth/login';
 
 // -----------------
+// OWNER
+// -----------------
+
+$route['owner'] = 'Owner_Pengguna/index';
+
+$route['owner/pengguna'] = 'Owner_Pengguna/index';
+$route['owner/pengguna/create'] = 'Owner_Pengguna/create';
+$route['owner/pengguna/store'] = 'Owner_Pengguna/store';
+$route['owner/pengguna/show/(:any)'] = 'Owner_Pengguna/show/$1';
+$route['owner/pengguna/edit/(:any)'] = 'Owner_Pengguna/edit/$1';
+$route['owner/pengguna/update/(:any)'] = 'Owner_Pengguna/update/$1';
+$route['owner/pengguna/destroy/(:any)'] = 'Owner_Pengguna/destroy/$1';
+
+$route['owner/pendapatan'] = 'Owner_Pendapatan/index';
+
+// -----------------
+// KASIR
+// -----------------
+
+$route['kasir'] = 'Kasir_Pembayaran/index';
+
+$route['kasir/pembayaran'] = 'Kasir_Pembayaran/index';
+$route['kasir/pembayaran/create'] = 'Kasir_Pembayaran/create';
+$route['kasir/pembayaran/store'] = 'Kasir_Pembayaran/store';
+
+// -----------------
+// CUSTOMER SERVIS
+// -----------------
+
+$route['customer_servis'] = 'CustomerServis_Kuisioner/index';
+
+$route['customer_servis/kuisioner'] = 'CustomerServis_Kuisioner/index';
+$route['customer_servis/kuisioner/create'] = 'CustomerServis_Kuisioner/create';
+$route['customer_servis/kuisioner/store'] = 'CustomerServis_Kuisioner/store';
+$route['customer_servis/kuisioner/show/(:any)'] = 'CustomerServis_Kuisioner/show/$1';
+$route['customer_servis/kuisioner/edit/(:any)'] = 'CustomerServis_Kuisioner/edit/$1';
+$route['customer_servis/kuisioner/update/(:any)'] = 'CustomerServis_Kuisioner/update/$1';
+$route['customer_servis/kuisioner/destroy/(:any)'] = 'CustomerServis_Kuisioner/destroy/$1';
+
+// -----------------
 // KOKI
 // -----------------
 

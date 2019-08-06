@@ -25,7 +25,7 @@ class Kuisioner_model extends CI_Model {
 	public function store()
 	{
 		$data = array(
-			'StatusKuisioner' => $this->input->post('StatusKuisioner'),
+			'StatusKuisioner' => 'Sudah Diisi',
 			'Jwb_kondisi' => $this->input->post('Jwb_kondisi'),
 			'Jwb_tempat' => $this->input->post('Jwb_tempat'),
 			'Jwb_menu' => $this->input->post('Jwb_menu'),
@@ -38,7 +38,6 @@ class Kuisioner_model extends CI_Model {
 	public function update($id)
 	{
 		$data = array(
-			'StatusKuisioner' => $this->input->post('StatusKuisioner'),
 			'Jwb_kondisi' => $this->input->post('Jwb_kondisi'),
 			'Jwb_tempat' => $this->input->post('Jwb_tempat'),
 			'Jwb_menu' => $this->input->post('Jwb_menu'),

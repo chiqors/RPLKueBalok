@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ site_url('pantry') }}" class="brand-link bg-primary">
+    <a href="{{ site_url('customer_servis') }}" class="brand-link bg-primary">
         <img src="{{ asset('cpanel/img/logo.png') }}" alt="Logo" class="brand-image"
             style="opacity: .8">
         <span class="brand-text font-weight"><b>{{ getenv('APP_NAME') }}</b></span>
@@ -21,22 +21,14 @@
         <nav class="mt-2 sidebar-container">
             <ul class="nav nav-pills nav-sidebar flex-column sidebar-menu" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-            with font-awesome or any other icon font library -->
-                <li class="nav-item {{ @$activeMenu == 'beranda' ? 'menu-open' : '' }}">
-                    <a href="{{ site_url('pantry') }}" class="nav-link {{ @$activeMenu == 'beranda' ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-dashboard"></i>
-                        <p>
-                            Beranda
-                        </p>
-                    </a>
-				</li>
-				<li class="nav-item {{ @$activeMenu == 'bahanbaku' ? 'menu-open' : '' }}">
-                    <a href="{{ site_url('pantry/bahanbaku') }}" class="nav-link {{ @$activeMenu == 'bahanbaku' ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-cubes"></i>
-                        <p>
-                            Bahan Baku
-                        </p>
-                    </a>
+			with font-awesome or any other icon font library -->
+				<li class="nav-item {{ @$activeMenu == 'kuisioner' ? 'menu-open' : '' }}">
+					<a href="{{ site_url('customer_servis/kuisioner') }}" class="nav-link {{ @$activeMenu == 'kuisioner' ? 'active' : '' }}">
+						<i class="nav-icon fa fa-file-text"></i>
+						<p>
+							Kuisioner
+						</p>
+					</a>
 				</li>
             </ul>
         </nav>

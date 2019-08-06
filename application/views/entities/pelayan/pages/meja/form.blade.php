@@ -1,4 +1,4 @@
-@extends('entities.pantry.layouts.panel')
+@extends('entities.pelayan.layouts.panel')
 
 @section('hstyles')
     <link rel="stylesheet" href="{{ asset('cpanel/vendor/bootstrap-datetimepicker/tempusdominus-bootstrap-4.min.css') }}" />
@@ -10,13 +10,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Tambah Belanja Bahan Baku <small></small></h1>
+                <h1>{{ @$info ? 'Ubah' : 'Tambah' }} Meja <small></small></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-					<li class="breadcrumb-item"><a href="{{ site_url('pantry') }}">Beranda</a></li>
-					<li class="breadcrumb-item"><a href="{{ site_url('pantry/bahanbaku') }}">Bahan Baku</a></li>
-                    <li class="breadcrumb-item active">Tambah Belanja Bahan Baku</li>
+					<li class="breadcrumb-item"><a href="{{ site_url('pelayan/meja') }}">Meja</a></li>
+                    <li class="breadcrumb-item active">{{ @$info ? 'Ubah' : 'Tambah' }} Meja</li>
                 </ol>
             </div>
         </div>
@@ -26,14 +25,14 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <form role="form" action="{{ site_url('pantry/bahanbaku/belanja/'.$info_id_bahanbaku.'/store') }}" enctype="multipart/form-data" method="POST">
+        <form role="form" action="{{ @$info ? site_url('pelayan/meja/update/'.@$info->IdMenu) : site_url('pelayan/meja/store') }}" enctype="multipart/form-data" method="POST">
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
                     <!-- general form elements -->
-                    <div class="card card-primary">
+                    <div class="card card-{{ @$info ? 'warning' : 'primary' }}">
                         <div class="card-header">
-                            <h3 class="card-title">Belanja Bahan Baku</h3>
+                            <h3 class="card-title">Meja</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                                     <i class="fa fa-minus"></i></button>
@@ -46,39 +45,28 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-										<label for="nama">Bahan Baku</label>
-										@if(!$info_id_bahanbaku)
-										<select class="form-control" name="IdBahanBaku">
-											@if(@$info_bahanbaku)
-											@foreach ($info_bahanbaku as $info_data)
-											<option value="{{ $info_data->IdBahanBaku }}">{{ $info_data->IdBahanBaku }} - {{ $info_data->Nama }}</option>
-											@endforeach
-											@endif
+										<label for="Kapasitas">Kapasitas</label>
+                                        <input type="text" class="form-control" name="Kapasitas" placeholder="Kapasitas" value="{{ @$info->Kapasitas }}">
+									</div>
+									<div class="form-group">
+                                        <label for="TipeMeja">Tipe Meja</label>
+                                        <select class="form-control" name="TipeMeja">
+											<option value="2 Orang" {{ (@$info->TipeMeja=="2 Orang") ? 'selected' : '' }}>Pasangan (2 Orang)</option>
+											<option value="4 Orang" {{ (@$info->TipeMeja=="4 Orang") ? 'selected' : '' }}>Keluarga (4 Orang)</option>
+											<option value="5 Orang" {{ (@$info->TipeMeja=="5 Orang") ? 'selected' : '' }}>Keluarga (5 Orang)</option>
+											<option value="6 Orang" {{ (@$info->TipeMeja=="6 Orang") ? 'selected' : '' }}>Keluarga (6 Orang)</option>
+											<option value="8 Orang" {{ (@$info->TipeMeja=="8 Orang") ? 'selected' : '' }}>Keluarga Besar (8 Orang)</option>
 										</select>
-										@else
-										<input type="text" class="form-control" name="IdBahanBaku" placeholder="ID Bahan Baku" value="{{ @$info_id_bahanbaku }}" readonly>
-										@endif
                                     </div>
                                     <div class="form-group">
-										<label for="Kuantitas">Kuantitas</label>
-                                        <input type="text" class="form-control" name="Kuantitas" placeholder="Kuantitas" value="{{ @$info->kuantitas }}">
-                                    </div>
-                                    <div class="form-group">
-										<label for="TanggalKadaluarsa">Tanggal Kadaluarsa</label>
-										<div class="form-group">
-											<div class="input-group date" id="tanggalkadaluarsa" data-target-input="nearest">
-												<input type="text" name="TanggalKadaluarsa" placeholder="Tanggal Kadaluarsa" class="form-control datetimepicker-input" data-target="#tanggalkadaluarsa" readonly/>
-												<div class="input-group-append" data-target="#tanggalkadaluarsa" data-toggle="datetimepicker">
-													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
-												</div>
-											</div>
-										</div>
+                                        <label for="HargaLayananMeja">Harga Layanan Meja</label>
+                                        <input type="text" class="form-control" name="HargaLayananMeja" placeholder="Harga Layanan Meja" value="{{ @$info->HargaLayananMeja }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-{{ @$info ? 'warning' : 'primary' }}">Submit</button>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -93,9 +81,8 @@
 @section('fscripts')
     <script type="text/javascript">
         $(function () {
-            $('#tanggalkadaluarsa').datetimepicker({
-                format : 'YYYY-MM-DD',
-				locale: 'id',
+            $('#datetimepicker1').datetimepicker({
+                format : 'YYYY-MM-DD hh:mm:ss',
                 ignoreReadonly: true
             });
         });
