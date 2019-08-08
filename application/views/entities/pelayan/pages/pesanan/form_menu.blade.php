@@ -78,10 +78,10 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="row">
-					<form role="form" action="{{ site_url('pelayan/pesanan/menu/store') }}" enctype="multipart/form-data" method="POST">
+				<form role="form" action="{{ site_url('pelayan/pesanan/menu/store') }}" enctype="multipart/form-data" method="POST">
+					<div class="row">
 						<div class="col-12">
-							<div class="card card-secondary">
+							<div class="card card-warning">
 								<div class="card-header">
 									<h3 class="card-title">Tambah Detail Pesanan Menu</h3>
 									<div class="card-tools">
@@ -96,14 +96,18 @@
 									<div class="row">
 										<div class="col-12">
 											<div class="form-group">
-												<label for="IdMenu">Nomor Meja</label>
+												<label for="IdMenu">Nama Menu</label>
 												<select class="form-control" name="IdMenu">
-													@if(@$info_pesanan_menu)
-													@foreach($info_pesanan_menu as $info_data)
+													@if(@$info2)
+													@foreach($info2 as $info_data)
 													<option value="{{ $info_data->IdMenu }}">{{ $info_data->Nama }} - ({{ $info_data->JenisMenu }} | {{ $info_data->Harga }})</option>
 													@endforeach
 													@endif
 												</select>
+											</div>
+											<div class="form-group">
+												<label for="Kuantitas">Kuantitas</label>
+												<input type="text" class="form-control" name="Kuantitas" placeholder="Kuantitas">
 											</div>
 										</div>
 									</div>
@@ -121,7 +125,7 @@
 										<div class="col-6">
 											<div class="row float-right">
 												<div class="col-12">
-													<button type="submit" name="submitForm" class="btn btn-primary">Lanjut</button>
+													<button type="submit" name="submitForm" class="btn btn-primary">Selesai</button>
 												</div>
 											</div>
 										</div>
@@ -154,7 +158,7 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($info2 as $info_data)	
+											@foreach ($info3 as $info_data)	
 											<tr>
 												<td>{{ $info_data->IdMenu }}</td>
 											</tr>

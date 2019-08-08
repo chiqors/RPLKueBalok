@@ -40,7 +40,6 @@ class Koki_Menu extends CI_Controller {
 			$this->session->set_flashdata('error', validation_errors());
 			redirect('koki/menu/create');
 		} else {
-			
 			$info_id_menu = $this->menu_model->store();
 			$info_lanjut = array(
 				'info_id_menu'  => $info_id_menu
@@ -135,38 +134,38 @@ class Koki_Menu extends CI_Controller {
 	}
 
 	public function edit($id) {
-		$data_get = $this->bahanbaku_model->get_data($id);
+		$data_get = $this->menu_model->get_data($id);
 		if (empty($data_get)) {
-			redirect('pantry/bahanbaku');
+			redirect('koki/menu');
 		}
 		$data = array(
 			'info' => $data_get,
-            'title' => 'Ubah Bahan Baku #'.$id
+            'title' => 'Ubah Menu #'.$id
         );
-		$this->slice->view('entities.pantry.pages.bahanbaku.form', $data);
+		$this->slice->view('entities.koki.pages.menu.form', $data);
 	}
 
 	public function update($id)
 	{
-		$this->form_validation->set_rules('Nama', 'Nama', 'required');
-		$this->form_validation->set_rules('Jenis', 'Jenis', 'required');
-		$this->form_validation->set_rules('Kategori', 'Kategori', 'required');
+		$this->form_validation->set_rules('JenisMenu', 'Jenis Menu', 'required');
+		$this->form_validation->set_rules('Nama', 'Nama Menu', 'required');
+		$this->form_validation->set_rules('Harga', 'Harga Menu', 'required');
 
 		if($this->form_validation->run() === FALSE) {
 			$this->session->set_flashdata('error', validation_errors());
-			redirect('pantry/bahanbaku/edit/'.$id);
+			redirect('koki/menu/edit/'.$id);
 		} else {
-			$this->bahanbaku_model->update($id);
-			$this->session->set_flashdata('success', 'Bahan Baku #'.$id.' telah diperbaharui');
-			redirect('pantry/bahanbaku');
+			$this->menu_model->update($id);
+			$this->session->set_flashdata('success', 'Menu #'.$id.' telah diperbaharui');
+			redirect('koki/menu');
 		}
 	}
 
 	public function destroy($id)
 	{
-		$this->bahanbaku_model->destroy($id);
-		$this->session->set_flashdata('success', 'Bahan Baku #'.$id.' telah terhapus');
-		redirect('pantry/bahanbaku');
+		$this->menu_model->destroy($id);
+		$this->session->set_flashdata('success', 'Menu #'.$id.' telah terhapus');
+		redirect('koki/menu');
 	}
 
 }

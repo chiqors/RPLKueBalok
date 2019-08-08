@@ -27,8 +27,12 @@ class Menu_model extends CI_Model {
 	public function get_list_menu_bahanbaku($id, $search = FALSE)
 	{
 		if ($search === FALSE) {
-			$query = $this->db->get_where('menu_bahanbaku', array('IdMenu' => $id));
-			return $query->result();
+			$query = $this->db->select('*');
+			$query->from('bahanbaku');
+			$query->join('menu_bahanbaku', 'bahanbaku.IdBahanBaku = menu_bahanbaku.IdBahanBaku');
+			$query->where('menu_bahanbaku.IdMenu =', $id);
+			$result = $query->get();
+			return $result->result();
 		}
 	}
 

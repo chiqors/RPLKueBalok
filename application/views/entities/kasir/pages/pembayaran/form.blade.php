@@ -1,4 +1,4 @@
-@extends('entities.koki.layouts.panel')
+@extends('entities.kasir.layouts.panel')
 
 @section('hstyles')
     <link rel="stylesheet" href="{{ asset('cpanel/vendor/bootstrap-datetimepicker/tempusdominus-bootstrap-4.min.css') }}" />
@@ -46,11 +46,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="KodePesanan">Kode Pesanan</label>
-                                        <select class="form-control" name="KodePesanan">
+                                        <select id="kodepesanan" class="form-control" name="KodePesanan">
 											@if(@$info_pesanan)
 											@foreach ($info_pesanan as $info_data)
 											<option value="{{ $info_data->KodePesanan }}">{{ $info_data->KodePesanan }}</option>
 											@endforeach
+											@else
+											<option value="">-- TIDAK ADA PESANAN --</option>
 											@endif
 										</select>
 									</div>
@@ -67,23 +69,23 @@
 									</div>
 									<div class="form-group">
 										<label for="SubTotalBayar">Sub Total Bayar</label>
-										<input type="text" class="form-control" name="SubTotalBayar" value="">
+										<input id="subtotalbayar" type="text" class="form-control" name="SubTotalBayar" value="0" readonly>
 									</div>
 								</div>
 								<div class="col-6">
 									<div class="form-group">
 										<label for="Diskon">Diskon</label>
-										<input type="text" class="form-control" name="Diskon" value="">
+										<input id="diskon" type="text" class="form-control" name="Diskon" value="0">
 									</div>
 									<div class="form-group">
 										<label for="TotalBayar">Total Bayar</label>
-										<input type="text" class="form-control" name="TotalBayar" value="">
+										<input id="totalbayar" type="text" class="form-control" name="TotalBayar" value="0" readonly>
 									</div>
 								</div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-{{ @$info ? 'warning' : 'primary' }}">Submit</button>
+                            <button id="btnSubmitForm" type="submit" class="btn btn-{{ @$info ? 'warning' : 'primary' }}">Submit</button>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -119,5 +121,38 @@
                 console.error(error)
             })
         })
-    </script>
+	</script>
+	<script type="text/javascript">
+		 $('#kodepesanan').change(function() {
+			var kodepesanan = $(this).val;
+			var to_url = "{{ site_url('kasir/pembayaran/get_pesanan_subtotalbayar/"+kodepesanan+"') }}";
+			$.ajax({
+				url : to_url,
+				method : "GET",
+				data : {SubTotalBayar: SubTotalBayar},
+				async : true,
+				dataType : 'json',
+				error: function() {
+					alert('Something is wrong');
+				},
+				success: function(data) {
+					$('#subtotalbayar').val(data.SubTotalBayar);
+					$('#diskon').val('0');
+					$('#totalbayar').val(data.SubTotalBayar);
+				}
+			});
+			return false;
+		});
+	</script>
+	<script>
+		$('#btnSubmitForm').hide();
+		$('#diskon').on('input', function() {
+			var input_subtotalbayar = $('#subtotalbayar').val();
+			var input_diskon = $(this).val();
+			var total_bayar_kurang = input_subtotalbayar * (input_diskon/100);
+			var total_bayar = input_subtotalbayar - total_bayar_kurang;
+			$('#totalbayar').val(total_bayar);
+			$('#btnSubmitForm').slideDown("slow");
+		});
+	</script>
 @endsection

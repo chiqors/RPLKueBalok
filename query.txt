@@ -1,0 +1,6 @@
+SELECT SUM(menu.Harga)+SUM(meja.HargaLayananMeja) AS SubTotalBayar
+FROM
+	pesanan JOIN detailmenupesanan USING(KodePesanan)
+    		JOIN menu USING(IdMenu)
+    		JOIN detailmejapesanan USING(KodePesanan)
+            JOIN meja USING(NoMeja)

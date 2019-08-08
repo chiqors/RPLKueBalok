@@ -46,11 +46,11 @@
                                 <div class="col-6">
 									<div class="form-group">
 										<label for="KodePesanan">Kode Pesanan</label>
-                                        <input type="text" class="form-control" name="KodePesanan" placeholder="Kode Pesanan" value="">
+                                        <input type="text" class="form-control" name="KodePesanan" placeholder="Kode Pesanan" value="{{ generate_kode() }}" readonly>
                                     </div>
                                     <div class="form-group">
 										<label for="NIP">NIP</label>
-                                        <input type="text" class="form-control" name="NIP" placeholder="NIP" value="" readonly>
+                                        <input type="text" class="form-control" name="NIP" placeholder="NIP" value="{{ $this->session->nip }}" readonly>
                                     </div>
                                     <div class="form-group">
 										<label for="TanggalPesanan">Tanggal Pesanan</label>
@@ -65,7 +65,7 @@
 									</div>
 									<div class="form-group">
 										<label for="StatusPesanan">Status Pesanan</label>
-                                        <input type="text" class="form-control" name="NIP" placeholder="Nama" value="Dipesan" readonly>
+                                        <input type="text" class="form-control" name="StatusPesanan" placeholder="Nama" value="Dipesan" readonly>
                                     </div>
 								</div>
 								<div class="col-6">

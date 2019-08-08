@@ -11,6 +11,12 @@ class Kasir_Pembayaran extends CI_Controller {
 		}
 	}
 
+	// GET Pesanan Sub Total Pembayaran
+    public function get_pesanan_subtotalbayar($id) {
+        $data_get = $this->pembayaran_model->get_data_pesanan_subtotalbayar($id);
+        echo json_encode($data_get);
+    }
+
 	public function index()
 	{
 		$data_get = $this->pembayaran_model->get_list();

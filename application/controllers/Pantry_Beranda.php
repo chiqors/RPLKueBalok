@@ -13,7 +13,13 @@ class Pantry_Beranda extends CI_Controller {
 
 	public function index()
 	{
+		$data_get1 = $this->pantry_model->count_total_bahanbaku();
+		$data_get2 = $this->pantry_model->check_ketersediaan_bahanbaku();
+		$data_get3 = $this->pantry_model->get_list_available_bahanbaku();
 		$data = array(
+			'info_total_bahanbaku' => $data_get1,
+			'info_status_ketersediaan' => $data_get2,
+			'info_available_bahanbaku' => $data_get3,
 			'activeMenu' => 'beranda',
             'title' => 'Beranda'
         );

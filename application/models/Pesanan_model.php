@@ -8,6 +8,64 @@ class Pesanan_model extends CI_Model {
 		$this->load->database();
 	}
 
+	public function get_list($search = FALSE)
+	{
+		if ($search === FALSE) {
+			$query = $this->db->get('pesanan');
+			return $query->result();
+		}
+	}
+
+	public function get_data($info)
+	{
+		$query = $this->db->get_where('pesanan', array('KodePesanan' => $info));
+		return $query->row();
+	}
+
+	public function get_list_available_meja()
+	{
+		$query = $this->db->get('meja');
+		return $query->result();
+	}
+
+	public function get_list_pesanan_meja($info, $search = FALSE)
+	{
+		if ($search === FALSE) {
+			$query = $this->db->get_where('detailmejapesanan', array('KodePesanan' => $info));
+			return $query->result();
+		}
+	}
+
+	public function get_list_available_menu()
+	{
+		$query = $this->db->get('menu');
+		return $query->result();
+	}
+
+	public function get_list_pesanan_menu($info, $search = FALSE)
+	{
+		if ($search === FALSE) {
+			$query = $this->db->get_where('detailmenupesanan', array('KodePesanan' => $info));
+			return $query->result();
+		}
+	}
+
+	public function store()
+	{
+		$data = array(
+			'KodePesanan' => $this->input->post('KodePesanan'),
+			'NIP' => $this->input->post('NIP'),
+			'TanggalPesanan' => $this->input->post('TanggalPesanan'),
+			'StatusPesanan' => $this->input->post('StatusPesanan'),
+			'NamaPelanggan' => $this->input->post('NamaPelanggan'),
+			'NoTelepon' => $this->input->post('NoTelepon'),
+			'Email' => $this->input->post('Email')
+		);
+		$this->db->insert('pesanan', $data);
+		$insert_id = $this->db->insert_id();
+		return $insert_id;
+	}
+
 	public function get_list_all_pesanan_menu($search = FALSE)
 	{
 		if ($search === FALSE) {

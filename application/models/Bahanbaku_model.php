@@ -61,17 +61,20 @@ class Bahanbaku_model extends CI_Model {
 
 	public function destroy($id)
 	{
-		$this->db->where('IdBahanBaku', $id);
-		$this->db->delete('bahanbaku');
+		$query1 = $this->db->where('IdBahanBaku', $id);
+		$query1->delete('belanja');
+		$query2 = $this->db->where('IdBahanBaku', $id);
+		$query2->delete('bahanbaku');
 		return true;
 	}
 
 	public function store_belanja($id)
 	{
 		$data = array(
-			'IdBahanBaku' => $this->input->post('IdBahanBaku'),
+			'IdBahanBaku' => $id,
 			'Kuantitas' => $this->input->post('Kuantitas'),
-			'TanggalKadaluarsa' => $this->input->post('TanggalKadaluarsa')
+			'TanggalKadaluarsa' => $this->input->post('TanggalKadaluarsa'),
+			'TanggalBeli' => date('Y-m-d')
 		);
 		return $this->db->insert('belanja', $data);
 	}

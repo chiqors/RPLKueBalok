@@ -32,7 +32,7 @@ class Auth extends CI_Controller {
 		$login = $this->pengguna_model->do_login();
 		if ($login > 0) {
 			$data_session = array(
-				'idadmin' => $login->IdAdmin,
+				'nip' => $login->NIP,
 				'username' => $login->Username,
 				'jabatan' => $login->Jabatan
 			);

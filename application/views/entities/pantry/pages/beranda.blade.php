@@ -65,7 +65,7 @@
 		<!-- Default box -->
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Tabel Bahan Baku</h3>
+				<h3 class="card-title">Tabel Tersedia Bahan Baku</h3>
 				<div class="card-tools">
 					<button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip"
 						title="Collapse">
@@ -79,19 +79,27 @@
 					<table id="table-data" class="table table-bordered table-striped text-center table-responsive-sm">
 						<thead>
 							<tr>
-								<td>No</td>
-								<td>Bahan Baku</td>
+								<th>#</th>
+								<th>Nama</th>
+								<th>Jenis</th>
+								<th>Kategori</th>
+								<th>Tanggal Kadaluarsa</th>
+								<th>Kuantitas</th>
 							</tr>
 						</thead>
 						<tbody>
-							@if(@$info_bahanbaku)
+							@if(@$info_available_bahanbaku)
 							@php
-							$i = 0;
+								$i = 0;
 							@endphp
-							@foreach ($info_bahanbaku as $info_data)
+							@foreach ($info_available_bahanbaku as $info_data)
 							<tr>
 								<td>{{ ++$i }}</td>
 								<td>{{ $info_data->Nama }}</td>
+								<td>{{ $info_data->Jenis }}</td>
+								<td>{{ $info_data->Kategori }}</td>
+								<td>{{ $info_data->TanggalKadaluarsa }}</td>
+								<td>{{ $info_data->Kuantitas }}</td>
 							</tr>
 							@endforeach
 							@endif

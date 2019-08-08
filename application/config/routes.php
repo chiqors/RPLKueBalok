@@ -56,6 +56,32 @@ $route['translate_uri_dashes'] = FALSE;
 $route['auth/login'] = 'auth/login';
 
 // -----------------
+// PELAYAN
+// -----------------
+
+$route['pelayan'] = 'Pelayan_Pesanan/index';
+
+$route['pelayan/pesanan'] = 'Pelayan_Pesanan/index';
+$route['pelayan/pesanan/create'] = 'Pelayan_Pesanan/create';
+$route['pelayan/pesanan/store'] = 'Pelayan_Pesanan/store';
+$route['pelayan/pesanan/meja/create'] = 'Pelayan_Pesanan/create_pesanan_meja';
+$route['pelayan/pesanan/meja/store'] = 'Pelayan_Pesanan/store_pesanan_meja';
+$route['pelayan/pesanan/menu/create'] = 'Pelayan_Pesanan/create_pesanan_menu';
+$route['pelayan/pesanan/menu/store'] = 'Pelayan_Pesanan/store_pesanan_menu';
+$route['pelayan/pesanan/show/(:any)'] = 'Pelayan_Pesanan/show/$1';
+
+$route['pelayan/meja'] = 'Pelayan_Meja/index';
+$route['pelayan/meja/create'] = 'Pelayan_Meja/create';
+$route['pelayan/meja/store'] = 'Pelayan_Meja/store';
+$route['pelayan/meja/show/(:any)'] = 'Pelayan_Meja/show/$1';
+$route['pelayan/meja/edit/(:any)'] = 'Pelayan_Meja/edit/$1';
+$route['pelayan/meja/update/(:any)'] = 'Pelayan_Meja/update/$1';
+$route['pelayan/meja/destroy/(:any)'] = 'Pelayan_Meja/destroy/$1';
+
+$route['pelayan/menu'] = 'Pelayan_Menu/index';
+$route['pelayan/menu/show/(:any)'] = 'Pelayan_Menu/show/$1';
+
+// -----------------
 // OWNER
 // -----------------
 
@@ -80,6 +106,9 @@ $route['kasir'] = 'Kasir_Pembayaran/index';
 $route['kasir/pembayaran'] = 'Kasir_Pembayaran/index';
 $route['kasir/pembayaran/create'] = 'Kasir_Pembayaran/create';
 $route['kasir/pembayaran/store'] = 'Kasir_Pembayaran/store';
+
+// REST API AJAX GET Pesanan Sub Total Bayar
+$route['kasir/pembayaran/get_pesanan_subtotalbayar/(:any)'] = 'Kasir_Pembayaran/get_pesanan_subtotalbayar/$1';
 
 // -----------------
 // CUSTOMER SERVIS

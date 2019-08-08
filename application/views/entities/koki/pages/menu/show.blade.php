@@ -89,14 +89,14 @@
                         <table id="table-data" class="table table-bordered table-striped text-center table-responsive-sm">
                             <thead>
                                 <tr>
-                                    <th>ID Bahan Baku</th>
+                                    <th>Nama Bahan Baku</th>
                                     <th>Jumlah</th>
                                 </tr>
                             </thead>
                             <tbody>
 								@foreach ($info2 as $info_data)	
                                 <tr>
-                                    <td>{{ $info_data->IdBahanBaku }}</td>
+                                    <td>{{ $info_data->Nama }}</td>
 									<td>{{ $info_data->Jumlah }}</td>
 								</tr>
 								@endforeach

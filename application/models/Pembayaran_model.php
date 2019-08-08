@@ -22,11 +22,26 @@ class Pembayaran_model extends CI_Model {
 		return $query->row();
 	}
 
+	public function get_data_pesanan_subtotalbayar($id) {
+		$sql = "
+				SELECT SUM(menu.Harga)+SUM(meja.HargaLayananMeja) AS SubTotalBayar
+				FROM
+					pesanan JOIN detailmenupesanan USING(KodePesanan)
+							JOIN menu USING(IdMenu)
+							JOIN detailmejapesanan USING(KodePesanan)
+							JOIN meja USING(NoMeja)
+				WHERE
+					pesanan.KodePesanan = $id
+		";
+		$query = $this->db->query($sql);
+		return $query->row();
+	}
+	
 	public function store()
 	{
 		$data = array(
 			'KodePesanan' => $this->input->post('KodePesanan'),
-			'IdKuisioner' => $this->input->post('IdKuisioner'),
+			'IdKuisioner' => NULL,
 			'TanggalBayar' => $this->input->post('TanggalBayar'),
 			'SubTotalBayar' => $this->input->post('SubTotalBayar'),
 			'Diskon' => $this->input->post('Diskon'),

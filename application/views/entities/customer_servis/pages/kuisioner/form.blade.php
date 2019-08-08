@@ -1,4 +1,4 @@
-@extends('entities.koki.layouts.panel')
+@extends('entities.customer_servis.layouts.panel')
 
 @section('hstyles')
     <link rel="stylesheet" href="{{ asset('cpanel/vendor/bootstrap-datetimepicker/tempusdominus-bootstrap-4.min.css') }}" />
@@ -49,8 +49,10 @@
                                         <select class="form-control" name="KodePesanan">
 											@if(@$info_pembayaran)
 											@foreach ($info_pembayaran as $info_data)
-											<option value="{{ $info_data->KodePesanan }}">{{ $info_data->KodePesanan }}</option>
+											<option value="{{ $info_data->KodePesanan }}">Pembayaran: {{ $info_data->KodePesanan }}</option>
 											@endforeach
+											@else
+											<option value="">-- TIDAK ADA PEMBAYARAN KODE PESANAN --</option>
 											@endif
 										</select>
 									</div>

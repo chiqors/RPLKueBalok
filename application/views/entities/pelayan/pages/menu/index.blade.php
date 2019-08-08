@@ -45,19 +45,20 @@
                                     <th>ID Menu</th>
                                     <th>Jenis Menu</th>
                                     <th>Nama</th>
-                                    <th>Harga</th>
+									<th>Harga</th>
+									<th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-								@php
-								$i = 1;
-								@endphp
 								@foreach ($info as $info_data)	
                                 <tr>
-									<td>{{ $i++ }}</td>
+									<td>{{ $info_data->IdMenu }}</td>
                                     <td>{{ $info_data->JenisMenu }}</td>
                                     <td>{{ $info_data->Nama }}</td>
 									<td>{{ $info_data->Harga }}</td>
+									<td>
+										<a href="{{ site_url('pelayan/menu/show/'.$info_data->IdMenu) }}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Tampil</a>
+									</td>
 								</tr>
 								@endforeach
                             </tbody>

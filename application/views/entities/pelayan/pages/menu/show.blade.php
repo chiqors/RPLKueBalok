@@ -11,11 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Data Meja</h1>
+                <h1>Tampil Menu</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item active">Data Meja</li>
+					<li class="breadcrumb-item"><a href="{{ site_url('pelayan/menu') }}">Menu</a></li>
+                    <li class="breadcrumb-item active">Tampil Menu</li>
                 </ol>
             </div>
         </div>
@@ -24,11 +25,52 @@
 
 <!-- Main content -->
 <section class="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title"><b>Tampil Menu</b></h3>
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+							<i class="fa fa-minus"></i></button>
+						<button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+							<i class="fa fa-times"></i></button>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-user-information">
+								<tbody>
+									<tr>
+										<td>ID Menu</td>
+										<td>{{ $info1->IdMenu }}</td>
+									</tr>
+									<tr>
+										<td>Jenis Menu</td>
+										<td>{{ $info1->JenisMenu }}</td>
+									</tr>
+									<tr>
+										<td>Nama</td>
+										<td>{{ $info1->Nama }}</td>
+									</tr>
+									<tr>
+										<td>Harga</td>
+										<td>{{ $info1->Harga }}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card card-secondary">
                 <div class="card-header">
-                    <h3 class="card-title">Meja</h3>
+                    <h3 class="card-title">Data Bahan Baku</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                             <i class="fa fa-minus"></i></button>
@@ -38,41 +80,27 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="row">
-										<a href="{{ site_url('pelayan/meja/create') }}" class="btn btn-primary btn-xs"><i class="fa fa-plus"></i> Tambah Meja</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
                     <div class="row">
                         <table id="table-data" class="table table-bordered table-striped text-center table-responsive-sm">
                             <thead>
                                 <tr>
-                                    <th>Nomor Meja</th>
-                                    <th>Kapasitas</th>
-                                    <th>Tipe Meja</th>
-                                    <th>Harga Layanan Meja</th>
-                                    <th>Aksi</th>
+                                    <th>ID Bahan Baku</th>
+                                    <th>Nama Bahan Baku</th>
+                                    <th>Jenis Bahan Baku</th>
+                                    <th>Kategori</th>
                                 </tr>
                             </thead>
                             <tbody>
-								@foreach ($info as $info_data)	
+								@if(@$info2)
+								@foreach ($info2 as $info_data)	
                                 <tr>
-									<td>{{ $info_data->NoMeja }}</td>
-                                    <td>{{ $info_data->Kapasitas }}</td>
-                                    <td>{{ $info_data->TipeMeja }}</td>
-									<td>{{ $info_data->HargaLayananMeja }}</td>
-									<td>
-										<a href="{{ site_url('pelayan/meja/edit/'.$info_data->NoMeja) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a> | 
-										<a href="{{ site_url('pelayan/meja/destroy/'.$info_data->NoMeja) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</a>
-                                    </td>
+                                    <td>{{ $info_data->IdBahanBaku }}</td>
+                                    <td>{{ $info_data->Nama }}</td>
+									<td>{{ $info_data->Jenis }}</td>
+									<td>{{ $info_data->Kategori }}</td>
 								</tr>
 								@endforeach
+								@endif
                             </tbody>
                         </table>
                     </div>
@@ -81,7 +109,7 @@
             </div>
             <!-- /.card -->
         </div>
-		<!-- /.col -->
+        <!-- /.col -->
     </div>
     <!-- /.row -->
 </section>

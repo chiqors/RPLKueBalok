@@ -24,7 +24,9 @@ class CustomerServis_Kuisioner extends CI_Controller {
 
 	public function create()
 	{
+		$data_get = $this->kuisioner_model->get_list_pembayaran();
 		$data = array(
+			'info_pembayaran' => $data_get,
             'title' => 'Tambah Kuisioner Baru'
         );
 		$this->slice->view('entities.customer_servis.pages.kuisioner.form', $data);
@@ -46,6 +48,18 @@ class CustomerServis_Kuisioner extends CI_Controller {
 			$this->session->set_flashdata('success', 'Kuisioner baru telah ditambahkan');
 			redirect('customer_servis/kuisioner');
 		}
+	}
+
+	public function show($id) {
+		$data_get = $this->kuisioner_model->get_data($id);
+		if (empty($data_get)) {
+			redirect('customer_servis/kuisioner');
+		}
+		$data = array(
+			'info' => $data_get,
+            'title' => 'Tampil Kuisioner #'.$id
+        );
+		$this->slice->view('entities.customer_servis.pages.kuisioner.show', $data);
 	}
 
 	public function edit($id) {

@@ -11,9 +11,9 @@ if (!function_exists('asset'))
 	}
 }
 
-if (!function_exists('generate_sn'))
+if (!function_exists('generate_kode'))
 {
-	function generate_sn()
+	function generate_kode()
 	{
 		$length = 10;
 		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

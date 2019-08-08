@@ -78,10 +78,10 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="row">
-					<form role="form" action="{{ site_url('pelayan/pesanan/meja/store') }}" enctype="multipart/form-data" method="POST">
+				<form role="form" action="{{ site_url('pelayan/pesanan/meja/store') }}" enctype="multipart/form-data" method="POST">
+					<div class="row">
 						<div class="col-12">
-							<div class="card card-secondary">
+							<div class="card card-warning">
 								<div class="card-header">
 									<h3 class="card-title">Tambah Detail Pesanan Meja</h3>
 									<div class="card-tools">

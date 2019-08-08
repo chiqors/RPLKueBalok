@@ -40,7 +40,7 @@
                 <div class="card-body">
 					<div class="row">
 						<div class="col-sm-12">
-							<form action="{{ site_url('owner/pendapatan') }}" method="get">
+							<form action="{{ site_url('owner/pendapatan') }}" method="GET">
 								<div class="row">
 									<div class="col-3">
 										<div class="form-group">
@@ -49,8 +49,8 @@
 									</div>
 									<div class="col-3">
 										<select class="form-control form-control-sm" name="periodik">
-											<option value="Minggu">Minggu Ini</option>
-											<option value="Bulan">Bulan Ini</option>
+											<option value="Minggu" {{ (@$this->input->get('periodik')=='Minggu') ? 'selected' : '' }}>Minggu Ini</option>
+											<option value="Bulan" {{ (@$this->input->get('periodik')=='Bulan') ? 'selected' : '' }}>Bulan Ini</option>
 										</select>
 									</div>
 									<div class="col-6">
@@ -66,28 +66,28 @@
                         <table class="table table-user-information">
 							<tbody>
 								<tr>
-									<td>Tanggal</td>
-									<td>{{ @$tanggal }}</td>
+									<th>Tanggal</th>
+									<td>{{ time_beautifier_now() }}</td>
 								</tr>
 								<tr>
-									<td>Jumlah Pembayaran</td>
-									<td>{{ @$jumlah_pembayaran }}</td>
+									<th>Jumlah Pembayaran</th>
+									<td>{{ @$info_jumlah_pembayaran }}</td>
 								</tr>
 								<tr>
-									<td>Jumlah Belanja Bahan Baku</td>
-									<td>{{ @$jumlah_belanja_bahanbaku }}</td>
+									<th>Jumlah Belanja Bahan Baku</th>
+									<td>{{ @$info_jumlah_belanja_bahanbaku }}</td>
 								</tr>
 								<tr>
-									<td>Sub Total Pembayaran</td>
-									<td>{{ @$sub_total_pembayaran }}</td>
+									<th>Total Pembayaran</th>
+									<td>{{ @$info_total_pembayaran->TotalBayar ? @$info_total_pembayaran->TotalBayar : '0' }}</td>
 								</tr>
 								<tr>
-									<td>Total Pendapatan</td>
-									<td>{{ @$total_pendapatan }}</td>
+									<th>Total Pendapatan</th>
+									<td>{{ @$info_total_pendapatan }}</td>
 								</tr>
 								<tr>
-									<td>Status</td>
-									<td>{{ @$status }}</td>
+									<th>Status</th>
+									<td>{{ @$info_status }}</td>
 								</tr>
 							</tbody>
 						</table>
