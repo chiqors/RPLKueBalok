@@ -98,9 +98,9 @@
 											<div class="form-group">
 												<label for="NoMeja">Nomor Meja</label>
 												<select class="form-control" name="NoMeja">
-													@if(@$info_pesanan_meja)
-													@foreach($info_pesanan_meja as $info_data)
-													<option value="{{ $info_data->NoMeja }}">{{ $info_data->NoMeja }} - ({{ $info_data->Kapasitas }} | {{ $info_data->TipeMeja }})</option>
+													@if(@$info2)
+													@foreach($info2 as $info_data)
+													<option value="{{ $info_data->NoMeja }}">{{ $info_data->NoMeja }} - ({{ $info_data->Kapasitas }} Orang | {{ $info_data->TipeMeja }})</option>
 													@endforeach
 													@endif
 												</select>
@@ -154,9 +154,9 @@
 											</tr>
 										</thead>
 										<tbody>
-											@foreach ($info2 as $info_data)	
+											@foreach ($info3 as $info_data_meja)	
 											<tr>
-												<td>{{ $info_data->NoMeja }}</td>
+												<td>{{ $info_data_meja->NoMeja }}</td>
 											</tr>
 											@endforeach
 										</tbody>

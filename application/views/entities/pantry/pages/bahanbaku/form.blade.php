@@ -56,10 +56,8 @@
                                     <div class="form-group">
                                         <label for="kategori">Kategori Bahan Baku</label>
                                         <select class="form-control" name="Kategori">
-											<option value="Hewan" {{ (@$info->Kategori=='Hewan') ? 'selected' : '' }}>Hewan</option>
-											<option value="Sayuran" {{ (@$info->Kategori=='Sayuran') ? 'selected' : '' }}>Sayuran</option>
-											<option value="Bumbu" {{ (@$info->Kategori=='Bumbu') ? 'selected' : '' }}>Bumbu</option>
-											<option value="Cairan" {{ (@$info->Kategori=='Cairan') ? 'selected' : '' }}>Cairan</option>
+											<option value="Bahan Mentah" {{ (@$info->Kategori=='Bahan Mentah') ? 'selected' : '' }}>Bahan Mentah</option>
+											<option value="Topping" {{ (@$info->Kategori=='Topping') ? 'selected' : '' }}>Topping</option>
 										</select>
                                     </div>
                                 </div>

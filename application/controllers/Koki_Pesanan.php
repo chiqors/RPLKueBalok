@@ -24,7 +24,7 @@ class Koki_Pesanan extends CI_Controller {
 
 	public function confirm($id1,$id2) {
 		$this->pesanan_model->confirm_pesanan($id1,$id2);
-		$this->session->set_flashdata('success', 'Pesanan menu #'.$id2.' pada pesanan #'.$id1.' telah dilayani!');
+		$this->session->set_flashdata('success', 'Pesanan menu #'.$id2.' pada pesanan #'.$id1.' telah dilayani! Diserahkan ke Kasir untuk Pembayaran!');
 		redirect('koki/pesanan');
 	}
 

@@ -69,7 +69,7 @@
 									</div>
 									<div class="form-group">
 										<label for="SubTotalBayar">Sub Total Bayar</label>
-										<input id="subtotalbayar" type="text" class="form-control" name="SubTotalBayar" value="0" readonly>
+										<input id="subtotalbayar" type="text" class="form-control" name="SubTotalBayar" value="0">
 									</div>
 								</div>
 								<div class="col-6">
@@ -123,25 +123,27 @@
         })
 	</script>
 	<script type="text/javascript">
-		 $('#kodepesanan').change(function() {
-			var kodepesanan = $(this).val;
-			var to_url = "{{ site_url('kasir/pembayaran/get_pesanan_subtotalbayar/"+kodepesanan+"') }}";
-			$.ajax({
-				url : to_url,
-				method : "GET",
-				data : {SubTotalBayar: SubTotalBayar},
-				async : true,
-				dataType : 'json',
-				error: function() {
-					alert('Something is wrong');
-				},
-				success: function(data) {
-					$('#subtotalbayar').val(data.SubTotalBayar);
-					$('#diskon').val('0');
-					$('#totalbayar').val(data.SubTotalBayar);
-				}
+		$(document).ready(function(){
+			$('#kodepesanan').change(function() {
+				var kodepesanan = $(this).val;
+				var to_url = "{{ site_url('kasir/pembayaran/get_pesanan_subtotalbayar/"+kodepesanan+"') }}";
+				$.ajax({
+					url : to_url,
+					method : "GET",
+					data : {SubTotalBayar: SubTotalBayar},
+					async : true,
+					dataType : 'json',
+					error: function() {
+						alert('Something is wrong');
+					},
+					success: function(data) {
+						$('#subtotalbayar').val(data.SubTotalBayar);
+						$('#diskon').val('0');
+						$('#totalbayar').val(data.SubTotalBayar);
+					}
+				});
+				return false;
 			});
-			return false;
 		});
 	</script>
 	<script>

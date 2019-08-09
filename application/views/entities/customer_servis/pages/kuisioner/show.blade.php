@@ -47,6 +47,10 @@
 										<td>{{ $info->IdKuisioner }}</td>
 									</tr>
 									<tr>
+										<td>ID Pembayaran</td>
+										<td>{{ $info->IdPembayaran }}</td>
+									</tr>
+									<tr>
 										<td>Status Kuisioner</td>
 										<td>{{ $info->StatusKuisioner }}</td>
 									</tr>

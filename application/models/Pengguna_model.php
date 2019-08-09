@@ -33,6 +33,7 @@ class Pengguna_model extends CI_Model {
 	public function store()
 	{
 		$data = array(
+			'NIP' => $this->input->post('NIP'),
 			'Username' => $this->input->post('Username'),
 			'Password' => md5($this->input->post('Password')),
 			'NamaLengkap' => $this->input->post('NamaLengkap'),

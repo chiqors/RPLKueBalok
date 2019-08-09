@@ -146,7 +146,7 @@ $route['koki/menu/update/(:any)'] = 'Koki_Menu/update/$1';
 $route['koki/menu/destroy/(:any)'] = 'Koki_Menu/destroy/$1';
 
 $route['koki/pesanan'] = 'Koki_Pesanan/index';
-$route['koki/pesanan/confirm/(:any)/(:any)'] = 'Koki_Pesanan/show/$1/$2';
+$route['koki/pesanan/confirm/(:any)/(:any)'] = 'Koki_Pesanan/confirm/$1/$2';
 
 $route['koki/bahanbaku'] = 'Koki_Bahanbaku/index';
 $route['koki/bahanbaku/show/(:any)'] = 'Koki_Bahanbaku/show/$1';

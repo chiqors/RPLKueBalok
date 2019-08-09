@@ -61,12 +61,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-								@php
-								$i = 1;
-								@endphp
 								@foreach ($info as $info_data)	
                                 <tr>
-									<td>{{ $i++ }}</td>
+									<td>{{ $info_data->IdMenu }}</td>
                                     <td>{{ $info_data->JenisMenu }}</td>
                                     <td>{{ $info_data->Nama }}</td>
 									<td>{{ $info_data->Harga }}</td>

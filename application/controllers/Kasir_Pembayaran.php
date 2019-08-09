@@ -30,7 +30,9 @@ class Kasir_Pembayaran extends CI_Controller {
 
 	public function create()
 	{
+		$data_get = $this->pembayaran_model->get_list_pesanan();
 		$data = array(
+			'info_pesanan' => $data_get,
             'title' => 'Tambah Pembayaran Baru'
         );
 		$this->slice->view('entities.kasir.pages.pembayaran.form', $data);
@@ -39,7 +41,6 @@ class Kasir_Pembayaran extends CI_Controller {
 	public function store()
 	{
 		$this->form_validation->set_rules('KodePesanan', 'Kode Pesanan', 'required');
-		$this->form_validation->set_rules('IdKuisioner', 'ID Kuisioner', 'required');
 		$this->form_validation->set_rules('TanggalBayar', 'Tanggal Bayar', 'required');
 		$this->form_validation->set_rules('SubTotalBayar', 'Sub Total Bayar', 'required');
 		$this->form_validation->set_rules('Diskon', 'Diskon', 'required');
@@ -50,7 +51,7 @@ class Kasir_Pembayaran extends CI_Controller {
 			redirect('kasir/pembayaran/create');
 		} else {
 			$this->pembayaran_model->store();
-			$this->session->set_flashdata('success', 'Pembayaran baru telah ditambahkan');
+			$this->session->set_flashdata('success', 'Pembayaran baru pada Kode Pesanan #'.$this->input->post('KodePesanan').' telah ditambahkan! Diserahkan ke Customer Servis, bila ada kuisioner yang ingin ditambahkan');
 			redirect('kasir/pembayaran');
 		}
 	}

@@ -18,7 +18,7 @@ class Pelayan_Pesanan extends CI_Controller {
 			'info' => $data_get,
 			'activeMenu' => 'pesanan',
             'title' => 'Pesanan'
-        );
+		);
 		$this->slice->view('entities.pelayan.pages.pesanan.index', $data);
 	}
 
@@ -44,9 +44,9 @@ class Pelayan_Pesanan extends CI_Controller {
 			$this->session->set_flashdata('error', validation_errors());
 			redirect('pelayan/pesanan/create');
 		} else {
-			$info_kode_pesanan = $this->pesanan_model->store();
+			$mycode = $this->pesanan_model->store();
 			$info_lanjut = array(
-				'info_kode_pesanan'  => $info_kode_pesanan
+				'info_kode_pesanan'  => $mycode
 			);
 			$this->session->set_userdata($info_lanjut);
 			$this->session->set_flashdata('success', 'Pesanan baru telah ditambahkan, Silahkan isi form pesanan meja!');
@@ -63,7 +63,7 @@ class Pelayan_Pesanan extends CI_Controller {
 			'info1' => $data_get1,
 			'info2' => $data_get2,
 			'info3' => $data_get3,
-            'title' => 'Tambah Pesanan Meja Baru'
+            'title' => 'Tambah '.$this->session->info_kode_pesanan.' Pesanan Meja Baru'
         );
 		$this->slice->view('entities.pelayan.pages.pesanan.form_meja', $data);
 	}
@@ -116,7 +116,9 @@ class Pelayan_Pesanan extends CI_Controller {
 				redirect('pelayan/pesanan/menu/create');
 			}
 		} else {
-			$this->session->set_flashdata('success', 'Pesanan Menu telah dicatat, Pesanan berhasil ditambahkan!');
+			$alurdata = array('info_kode_pesanan');
+			$this->session->unset_userdata($alurdata);
+			$this->session->set_flashdata('success', 'Pesanan Menu telah dicatat, Pesanan berhasil ditambahkan dan diserahkan ke koki!');
 			redirect('pelayan/pesanan');
 		}
 	}

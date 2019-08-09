@@ -56,9 +56,13 @@
                                     <td>{{ $info_data->IdMenu }}</td>
                                     <td>{{ $info_data->Kuantitas }}</td>
 									<td>{{ $info_data->StatusMenu }}</td>
+									@if($info_data->StatusMenu=="Belum Dilayani")
 									<td>
 										<a href="{{ site_url('koki/pesanan/confirm/'.$info_data->KodePesanan.'/'.$info_data->IdMenu) }}" class="btn btn-info btn-xs"><i class="fa fa-check"></i> Sudah Dilayani</a>
-                                    </td>
+									</td>
+									@else
+									<td>-</td>
+									@endif
 								</tr>
 								@endforeach
                             </tbody>

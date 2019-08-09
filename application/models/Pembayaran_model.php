@@ -11,14 +11,38 @@ class Pembayaran_model extends CI_Model {
 	public function get_list($search = FALSE)
 	{
 		if ($search === FALSE) {
-			$query = $this->db->get('pembayaran');
+			$query = $this->db->select('*');
+			$query->from('pesanan');
+			$query->join('pembayaran', 'pesanan.KodePesanan = pembayaran.KodePesanan');
+			$result = $query->get()->result();
+			return $result;
+		}
+	}
+
+	public function get_list_pesanan($search = FALSE)
+	{
+		if ($search === FALSE) {
+			$this->db->where('StatusPesanan = ', 'Sudah Dilayani');
+			$query = $this->db->get('pesanan');
 			return $query->result();
 		}
+		/*if ($search === FALSE) {
+			$query = $this->db->select('*');
+			$query->from('pesanan');
+			$query->join('pembayaran', 'pesanan.KodePesanan = pembayaran.KodePesanan');
+			$result = $query->get()->result();
+			return $result;
+		}*/
 	}
 
 	public function get_data($info)
 	{
-		$query = $this->db->get_where('pembayaran', array('KodePesanan' => $info));
+		$query = $this->db->select('*');
+		$query->from('pesanan');
+		$query->join('pembayaran', 'pesanan.KodePesanan = pembayaran.KodePesanan');
+		$query->where('KodePesanan', $info);
+		$result = $query->get()->result();
+		return $result;
 		return $query->row();
 	}
 

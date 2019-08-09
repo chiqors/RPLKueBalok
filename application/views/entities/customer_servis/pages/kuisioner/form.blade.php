@@ -44,23 +44,25 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
+									@if(!@$info)
                                     <div class="form-group">
-                                        <label for="KodePesanan">Kode Pesanan</label>
-                                        <select class="form-control" name="KodePesanan">
+										<label for="KodePesanan">Kode Pesanan</label>
+                                        <select class="form-control" name="IdPembayaran">
 											@if(@$info_pembayaran)
 											@foreach ($info_pembayaran as $info_data)
-											<option value="{{ $info_data->KodePesanan }}">Pembayaran: {{ $info_data->KodePesanan }}</option>
+											<option value="{{ $info_data->IdPembayaran }}">Pembayaran: {{ $info_data->KodePesanan }} - Nama:{{ $info_data->NamaPelanggan }} - Kasir: {{ $info_data->NIP }}</option>
 											@endforeach
 											@else
 											<option value="">-- TIDAK ADA PEMBAYARAN KODE PESANAN --</option>
 											@endif
 										</select>
 									</div>
+									@endif
 									<div class="form-group">
 										<label for="TanggalPengisian">Tanggal Pengisian</label>
 										<div class="form-group">
 											<div class="input-group date" id="tanggalpengisian" data-target-input="nearest">
-												<input type="text" name="TanggalPengisian" placeholder="Tanggal Pengisian" class="form-control datetimepicker-input" data-target="#tanggalpengisian" readonly/>
+												<input type="text" name="TanggalPengisian" placeholder="Tanggal Pengisian" class="form-control datetimepicker-input" data-target="#tanggalpengisian" value="{{ @$info->TanggalPengisian }}" readonly/>
 												<div class="input-group-append" data-target="#tanggalpengisian" data-toggle="datetimepicker">
 													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 												</div>

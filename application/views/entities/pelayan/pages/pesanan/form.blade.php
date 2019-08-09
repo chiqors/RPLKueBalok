@@ -52,7 +52,13 @@
 										<label for="NIP">NIP</label>
                                         <input type="text" class="form-control" name="NIP" placeholder="NIP" value="{{ $this->session->nip }}" readonly>
                                     </div>
-                                    <div class="form-group">
+									<div class="form-group">
+										<label for="StatusPesanan">Status Pesanan</label>
+                                        <input type="text" class="form-control" name="StatusPesanan" placeholder="Nama" value="Dipesan" readonly>
+                                    </div>
+								</div>
+								<div class="col-6">
+									<div class="form-group">
 										<label for="TanggalPesanan">Tanggal Pesanan</label>
 										<div class="form-group">
 											<div class="input-group date" id="tanggalpesanan" data-target-input="nearest">
@@ -63,12 +69,6 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="StatusPesanan">Status Pesanan</label>
-                                        <input type="text" class="form-control" name="StatusPesanan" placeholder="Nama" value="Dipesan" readonly>
-                                    </div>
-								</div>
-								<div class="col-6">
 									<div class="form-group">
 										<label for="NamaPelanggan">Nama Pelanggan</label>
                                         <input type="text" class="form-control" name="NamaPelanggan" placeholder="Nama Pelanggan" value="">

@@ -19,7 +19,7 @@ class Pantry_model extends CI_Model {
 		$query = $this->db->select('count(*)');
 		$query->from('bahanbaku');
 		$query->join('belanja', 'bahanbaku.IdBahanBaku = belanja.IdBahanBaku');
-		$query->where('belanja.TanggalKadaluarsa > CURRENT_DATE()');
+		$query->where('belanja.TanggalKadaluarsa < CURRENT_DATE()');
 		$result = $query->count_all_results();
 		if ($result > 0) {
 			$output = $result;
@@ -34,7 +34,7 @@ class Pantry_model extends CI_Model {
 		$query = $this->db->select('belanja.IdBahanBaku, bahanbaku.Nama, bahanbaku.Jenis, bahanbaku.Kategori, belanja.TanggalKadaluarsa, belanja.Kuantitas');
 		$query->from('bahanbaku');
 		$query->join('belanja', 'bahanbaku.IdBahanBaku = belanja.IdBahanBaku');
-		$query->where('belanja.TanggalKadaluarsa <= CURRENT_DATE()');
+		$query->where('belanja.TanggalKadaluarsa >= CURRENT_DATE()');
 		$result = $query->get();
 		return $result->result();
 	}

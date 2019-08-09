@@ -46,7 +46,7 @@
                                 <div class="col-6">
 									<div class="form-group">
 										<label for="NIP">NIP</label>
-										<input type="text" class="form-control" name="NIP" value="{{ @$info->NIP }}" {{ (@$info->NIP) ? '' : 'readonly' }}>
+										<input type="text" class="form-control" name="NIP" value="{{ @$info->NIP }}" {{ (@$info->NIP) ? 'readonly' : '' }}>
 									</div>
 									<div class="form-group">
 										<label for="Username">Username</label>

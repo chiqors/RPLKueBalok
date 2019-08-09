@@ -77,9 +77,10 @@ class Menu_model extends CI_Model {
 
 	public function destroy($id)
 	{
-		$this->db->where('IdMenu', $id);
-		$this->db->delete('menu');
-		return true;
+		$query1 = $this->db->where('IdMenu', $id);
+		$query1->delete('menu_bahanbaku');
+		$query2 = $this->db->where('IdMenu', $id);
+		$query2->delete('menu');
 	}
 
 }

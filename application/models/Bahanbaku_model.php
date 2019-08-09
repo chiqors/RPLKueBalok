@@ -64,7 +64,9 @@ class Bahanbaku_model extends CI_Model {
 		$query1 = $this->db->where('IdBahanBaku', $id);
 		$query1->delete('belanja');
 		$query2 = $this->db->where('IdBahanBaku', $id);
-		$query2->delete('bahanbaku');
+		$query2->delete('menu_bahanbaku');
+		$query3 = $this->db->where('IdBahanBaku', $id);
+		$query3->delete('bahanbaku');
 		return true;
 	}
 

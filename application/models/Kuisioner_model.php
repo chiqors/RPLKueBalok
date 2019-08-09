@@ -20,8 +20,8 @@ class Kuisioner_model extends CI_Model {
 	{
 		if ($search === FALSE) {
 			$query = $this->db->select('*');
-			$query->from('pembayaran');
-			$query->join('pesanan', 'pembayaran.KodePesanan = pesanan.KodePesanan');
+			$query->from('pesanan');
+			$query->join('pembayaran', 'pesanan.KodePesanan = pembayaran.KodePesanan');
 			$query->where('pesanan.StatusPesanan =', 'Sudah Dilayani');
 			$result = $this->db->get();
 			return $result->result();
@@ -36,7 +36,8 @@ class Kuisioner_model extends CI_Model {
 
 	public function store()
 	{
-		$data1 = array(
+		$data = array(
+			'IdPembayaran' => $this->input->post('IdPembayaran'),
 			'StatusKuisioner' => 'Sudah Diisi',
 			'Jwb_kondisi' => $this->input->post('Jwb_kondisi'),
 			'Jwb_tempat' => $this->input->post('Jwb_tempat'),
@@ -44,13 +45,7 @@ class Kuisioner_model extends CI_Model {
 			'Jwb_servis' => $this->input->post('Jwb_servis'),
 			'TanggalPengisian' => $this->input->post('TanggalPengisian')
 		);
-		$query1 = $this->db->insert('kuisioner', $data1);
-		$insert_id = $query1->insert_id();
-		$data2 = array(
-			'IdKuisioner' => $insert_id
-		);
-		$query2 = $this->db->where('KodePesanan', $this->input->post('KodePesanan'));
-		return $this->db->update('pembayaran', $data2);
+		$this->db->insert('kuisioner', $data);
 	}
 
 	public function update($id)
@@ -68,13 +63,8 @@ class Kuisioner_model extends CI_Model {
 
 	public function destroy($id)
 	{
-		$data = array(
-			'IdKuisioner' => NULL
-		);
 		$query1 = $this->db->where('IdKuisioner', $id);
-		$query1->update('kuisioner', $data);
-		$query2 = $this->db->where('IdKuisioner', $id);
-		$query2->delete('kuisioner');
+		$query1->delete('kuisioner');
 		return true;
 	}
 

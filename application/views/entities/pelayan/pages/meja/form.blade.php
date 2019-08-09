@@ -25,7 +25,7 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <form role="form" action="{{ @$info ? site_url('pelayan/meja/update/'.@$info->IdMenu) : site_url('pelayan/meja/store') }}" enctype="multipart/form-data" method="POST">
+        <form role="form" action="{{ @$info ? site_url('pelayan/meja/update/'.@$info->NoMeja) : site_url('pelayan/meja/store') }}" enctype="multipart/form-data" method="POST">
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
@@ -51,11 +51,10 @@
 									<div class="form-group">
                                         <label for="TipeMeja">Tipe Meja</label>
                                         <select class="form-control" name="TipeMeja">
-											<option value="2 Orang" {{ (@$info->TipeMeja=="2 Orang") ? 'selected' : '' }}>Pasangan (2 Orang)</option>
-											<option value="4 Orang" {{ (@$info->TipeMeja=="4 Orang") ? 'selected' : '' }}>Keluarga (4 Orang)</option>
-											<option value="5 Orang" {{ (@$info->TipeMeja=="5 Orang") ? 'selected' : '' }}>Keluarga (5 Orang)</option>
-											<option value="6 Orang" {{ (@$info->TipeMeja=="6 Orang") ? 'selected' : '' }}>Keluarga (6 Orang)</option>
-											<option value="8 Orang" {{ (@$info->TipeMeja=="8 Orang") ? 'selected' : '' }}>Keluarga Besar (8 Orang)</option>
+											<option value="Umum" {{ (@$info->TipeMeja=="Umum") ? 'selected' : '' }}>Umum</option>
+											<option value="Keluarga" {{ (@$info->TipeMeja=="Keluarga") ? 'selected' : '' }}>Keluarga</option>
+											<option value="Deluxe" {{ (@$info->TipeMeja=="Deluxe") ? 'selected' : '' }}>Deluxe</option>
+											<option value="Formal" {{ (@$info->TipeMeja=="Formal") ? 'selected' : '' }}>Formal</option>
 										</select>
                                     </div>
                                     <div class="form-group">
