@@ -65,7 +65,6 @@ class Pembayaran_model extends CI_Model {
 	{
 		$data = array(
 			'KodePesanan' => $this->input->post('KodePesanan'),
-			'IdKuisioner' => NULL,
 			'TanggalBayar' => $this->input->post('TanggalBayar'),
 			'SubTotalBayar' => $this->input->post('SubTotalBayar'),
 			'Diskon' => $this->input->post('Diskon'),
