@@ -51,7 +51,7 @@ class Auth extends CI_Controller {
 				redirect('owner');
 			}
 		} else {
-			$this->session->set_flashdata('error', validation_errors());
+			$this->session->set_flashdata('error', 'Username atau Password tidak valid!');
 			redirect('auth/login');
 		}
 	}

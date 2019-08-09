@@ -8,6 +8,16 @@
 	<!-- /.login-logo -->
 	<div class="card">
 		<div class="card-body login-card-body">
+			@if (session('success'))
+			<div class="alert alert-success">
+				{{ session('success') }}
+			</div>
+			@endif
+			@if (session('error'))
+			<div class="alert alert-danger">
+				{{ session('error') }}
+			</div>
+			@endif
 			<p class="login-box-msg">Masuk untuk ke panel</p>
 
 			<form action="{{ site_url('auth/do_login') }}" method="post">
